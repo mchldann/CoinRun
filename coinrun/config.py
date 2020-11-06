@@ -32,10 +32,11 @@ class ConfigSingle(object):
 
         # The convolutional architecture to use
         # One of {'nature', 'impala', 'impalalarge'}
-        type_keys.append(('arch', 'architecture', str, 'impala', True))
+        #type_keys.append(('arch', 'architecture', str, 'impala', True))
+        type_keys.append(('arch', 'architecture', str, 'nature', True))
 
         # Should the model include an LSTM
-        type_keys.append(('lstm', 'use_lstm', int, 0, True))
+        type_keys.append(('lstm', 'use_lstm', int, 0, True)) # MICHAEL NOTE: This defaults to False
 
         # The number of parallel environments to run
         type_keys.append(('ne', 'num_envs', int, 32, True))
@@ -113,7 +114,7 @@ class ConfigSingle(object):
         bool_keys.append(('test-eval', 'test_eval'))
 
         # Only generate high difficulty levels
-        bool_keys.append(('highd', 'high_difficulty'))
+        bool_keys.append(('highd', 'high_difficulty')) # MICHAEL NOTE: This defaults to False
 
         # Use high resolution images for rendering
         bool_keys.append(('hres', 'is_high_res'))

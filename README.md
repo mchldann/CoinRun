@@ -1,5 +1,40 @@
 **Status:** Archive (code is provided as-is, no updates expected)
 
+# Notes to Self
+
+Looks like the training settings are in config.py.
+
+The reward for each episode is 10, so an average episode return of 6.5 should be interpreted as a 65% success rate.
+
+# Installing
+
+conda create -n py36 python=3.6 anaconda
+
+Good idea to make a clone at this point:
+conda create --name py36clone --clone py36
+
+source activate py36
+pip install tensorflow-gpu==1.12.0
+pip install -r requirements.txt
+pip install -e .
+
+Now needed this critical bit, which I didn't see mentioned in the install notes! Basically have to install an appropriate version of cudnn:
+conda install cudnn=7.1.2=cuda9.0_0
+
+
+# Actually running
+
+For some reason I was getting errors related to mpi4py... So:
+conda install -c anaconda mpi4py
+
+python -m coinrun.interactive (note: not actually running off the conda environment
+
+or to train an agent:
+python -m coinrun.train_agent --run-id myrun --save-interval 1
+
+Then fire up TensorBoard!
+tensorboard --logdir /tmp/tensorflow/myrun_0
+
 # Quantifying Generalization in Reinforcement Learning
 
 #### [[Blog Post]](https://blog.openai.com/quantifying-generalization-in-reinforcement-learning/) [[Paper]](https://drive.google.com/file/d/1U1-uufB_ZzQ1HG67BhW9bB8mTJ6JtS19/view)
