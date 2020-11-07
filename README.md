@@ -15,8 +15,19 @@ conda create --name py36clone --clone py36
 
 source activate py36
 pip install tensorflow-gpu==1.12.0
+
+Good idea to make another clone at this point:
+conda create --name py36clonetf --clone py36
+
+Extra steps needed on old dev box:
+conda install -c conda-forge scikit-build
+conda install -c anaconda mpi4py
+
 pip install -r requirements.txt
 pip install -e .
+
+Good idea to make *another* clone at this point:
+conda create --name py36cloneprecudnn --clone py36
 
 Now needed this critical bit, which I didn't see mentioned in the install notes! Basically have to install an appropriate version of cudnn:
 conda install cudnn=7.1.2=cuda9.0_0
