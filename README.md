@@ -29,8 +29,20 @@ pip install -e .
 Good idea to make *another* clone at this point:
 conda create --name py36cloneprecudnn --clone py36
 
+Somehow ended up with two versions of numpy installed at this point, one via conda, one via pip...
+Had to run:
+pip uninstall numpy
+
+Then (to update):
+conda install numpy
+
+Then I had issues with qt, so:
+conda install -c dsdale24 qt5
+
+Need to make sure there's not a bunch of old built stuff (c++ or python) in the coinrun directory. Show hidden files, delete the build stuff and delete all the pycache stuff.
+
 Now needed this critical bit, which I didn't see mentioned in the install notes! Basically have to install an appropriate version of cudnn:
-conda install cudnn=7.1.2=cuda9.0_0
+conda install -c anaconda cudnn=7.1.2=cuda9.0_0
 
 
 # Actually running
